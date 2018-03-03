@@ -1,0 +1,19 @@
+# CMake generation dependency list for this directory.
+P:/datum/build/imgui-download/CMakeLists.txt
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeDetermineSystem.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeSystem.cmake.in
+P:/datum/build/imgui-download/CMakeFiles/3.9.0-rc6/CMakeSystem.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/ExternalProject.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindGit.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/RepositoryInfo.txt.in
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindGit.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageMessage.cmake
+P:/datum/build/imgui-download/imgui-download-prefix/tmp/imgui-download-cfgcmd.txt.in

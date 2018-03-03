@@ -1,0 +1,40 @@
+# CMake generation dependency list for this directory.
+P:/datum/CMakeLists.txt
+P:/datum/build/CMakeFiles/3.9.0-rc6/CMakeSystem.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeSystemSpecificInitialize.cmake
+P:/datum/build/CMakeFiles/3.9.0-rc6/CMakeCCompiler.cmake
+P:/datum/build/CMakeFiles/3.9.0-rc6/CMakeCXXCompiler.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/Platform/Windows-MSVC.cmake
+P:/datum/build/CMakeFiles/3.9.0-rc6/CMakeRCCompiler.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeCommonLanguageInclude.cmake
+P:/datum/src/config.h.in
+P:/datum/src/CMakeLists.txt
+C:/Program Files/CMake/share/cmake-3.9/Modules/ExternalProject.cmake
+P:/datum/DownloadProject.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CMakeParseArguments.cmake
+P:/datum/DownloadProject.CMakeLists.cmake.in
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindOpenGL.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageMessage.cmake
+P:/datum/DownloadProject.CMakeLists.cmake.in
+P:/datum/DownloadProject.CMakeLists.cmake.in
+C:/Program Files/CMake/share/cmake-3.9/Modules/InstallRequiredSystemLibraries.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CPack.cmake
+C:/Program Files/CMake/share/cmake-3.9/Modules/CPackComponent.cmake
+C:/Program Files/CMake/share/cmake-3.9/Templates/CPackConfig.cmake.in
+C:/Program Files/CMake/share/cmake-3.9/Templates/CPackConfig.cmake.in

@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2740A588-C8C7-3CDD-BFC6-4081B9A0B751}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>P:\datum\build\bin\Debug;P:\datum\datum;P:\datum\..\external\glew-2.1.0\include;P:\datum\build\imgui-src;P:\datum\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>P:\datum\build\bin\Debug;P:\datum\datum;P:\datum\..\external\glew-2.1.0\include;P:\datum\build\imgui-src;P:\datum\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>P:\datum\build\bin\Debug;P:\datum\datum;P:\datum\..\external\glew-2.1.0\include;P:\datum\build\imgui-src;P:\datum\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>P:\datum\build\bin\Debug;P:\datum\datum;P:\datum\..\external\glew-2.1.0\include;P:\datum\build\imgui-src;P:\datum\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="P:\datum\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule P:/datum/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HP:/datum -BP:/datum/build --check-stamp-file P:/datum/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">P:/datum/CMakeLists.txt;P:\datum\CMakeLists.txt;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeCCompiler.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;P:\datum\src\config.h.in;P:\datum\src\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.9\Modules\ExternalProject.cmake;P:\datum\DownloadProject.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeParseArguments.cmake;P:\datum\DownloadProject.CMakeLists.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;P:\datum\DownloadProject.CMakeLists.cmake.in;P:\datum\DownloadProject.CMakeLists.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Modules\InstallRequiredSystemLibraries.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.9\Templates\CPackConfig.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Templates\CPackConfig.cmake.in;P:\datum\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">P:\datum\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule P:/datum/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HP:/datum -BP:/datum/build --check-stamp-file P:/datum/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">P:/datum/CMakeLists.txt;P:\datum\CMakeLists.txt;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeCCompiler.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;P:\datum\src\config.h.in;P:\datum\src\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.9\Modules\ExternalProject.cmake;P:\datum\DownloadProject.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeParseArguments.cmake;P:\datum\DownloadProject.CMakeLists.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;P:\datum\DownloadProject.CMakeLists.cmake.in;P:\datum\DownloadProject.CMakeLists.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Modules\InstallRequiredSystemLibraries.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.9\Templates\CPackConfig.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Templates\CPackConfig.cmake.in;P:\datum\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">P:\datum\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule P:/datum/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HP:/datum -BP:/datum/build --check-stamp-file P:/datum/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">P:/datum/CMakeLists.txt;P:\datum\CMakeLists.txt;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeCCompiler.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;P:\datum\src\config.h.in;P:\datum\src\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.9\Modules\ExternalProject.cmake;P:\datum\DownloadProject.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeParseArguments.cmake;P:\datum\DownloadProject.CMakeLists.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;P:\datum\DownloadProject.CMakeLists.cmake.in;P:\datum\DownloadProject.CMakeLists.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Modules\InstallRequiredSystemLibraries.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.9\Templates\CPackConfig.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Templates\CPackConfig.cmake.in;P:\datum\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">P:\datum\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule P:/datum/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -HP:/datum -BP:/datum/build --check-stamp-file P:/datum/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">P:/datum/CMakeLists.txt;P:\datum\CMakeLists.txt;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeSystem.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInitialize.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeCCompiler.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;P:\datum\build\CMakeFiles\3.9.0-rc6\CMakeRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeCommonLanguageInclude.cmake;P:\datum\src\config.h.in;P:\datum\src\CMakeLists.txt;C:\Program Files\CMake\share\cmake-3.9\Modules\ExternalProject.cmake;P:\datum\DownloadProject.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CMakeParseArguments.cmake;P:\datum\DownloadProject.CMakeLists.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\FindPackageMessage.cmake;P:\datum\DownloadProject.CMakeLists.cmake.in;P:\datum\DownloadProject.CMakeLists.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Modules\InstallRequiredSystemLibraries.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CPack.cmake;C:\Program Files\CMake\share\cmake-3.9\Modules\CPackComponent.cmake;C:\Program Files\CMake\share\cmake-3.9\Templates\CPackConfig.cmake.in;C:\Program Files\CMake\share\cmake-3.9\Templates\CPackConfig.cmake.in;P:\datum\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">P:\datum\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="P:\datum\build\ZERO_CHECK.vcxproj">
+      <Project>{9DA1BEFC-9F49-3EF9-B69F-C35BA6F18A3C}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="P:\datum\build\datum.vcxproj">
+      <Project>{CE799525-6BB4-30FA-8C0D-AB2AFB6105D6}</Project>
+      <Name>datum</Name>
+    </ProjectReference>
+    <ProjectReference Include="P:\datum\build\external\glew.vcxproj">
+      <Project>{A430F9C0-A7B6-3546-9E5B-E2B52BDE0578}</Project>
+      <Name>glew</Name>
+    </ProjectReference>
+    <ProjectReference Include="P:\datum\build\external\glew_s.vcxproj">
+      <Project>{C50AFE48-2B25-3662-8C37-897AB35696E9}</Project>
+      <Name>glew_s</Name>
+    </ProjectReference>
+    <ProjectReference Include="P:\datum\build\external\glewinfo.vcxproj">
+      <Project>{F77B1EB2-2968-3C1F-AEB9-31BE931D5E8D}</Project>
+      <Name>glewinfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="P:\datum\build\build\glfw-src\src\glfw.vcxproj">
+      <Project>{9C5E7A11-B050-337A-99BD-747DBD7517CD}</Project>
+      <Name>glfw</Name>
+    </ProjectReference>
+    <ProjectReference Include="P:\datum\build\external\visualinfo.vcxproj">
+      <Project>{D6E6D4CF-5185-30C4-9DF5-B14567F52FB4}</Project>
+      <Name>visualinfo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

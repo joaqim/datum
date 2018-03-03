@@ -1,0 +1,59 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/glew-download"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeLists.txt"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/61b29826c8b3fbe5135267f8d9a32d84/glew-download.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/4540fd323b3b97f99a5296fd81777c0d/glew-download-complete.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/0a2e183c55bdca9cebc7a03a88733aa5/glew-download-install.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/0a2e183c55bdca9cebc7a03a88733aa5/glew-download-mkdir.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/0a2e183c55bdca9cebc7a03a88733aa5/glew-download-download.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/0a2e183c55bdca9cebc7a03a88733aa5/glew-download-patch.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/0a2e183c55bdca9cebc7a03a88733aa5/glew-download-configure.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/0a2e183c55bdca9cebc7a03a88733aa5/glew-download-build.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/0a2e183c55bdca9cebc7a03a88733aa5/glew-download-test.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/glew-download/CMakeFiles/0a2e183c55bdca9cebc7a03a88733aa5/glew-download-skip-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "glew-download" ],
+		"name" : "glew-download"
+	}
+}

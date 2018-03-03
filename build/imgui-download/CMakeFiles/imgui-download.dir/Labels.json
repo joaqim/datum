@@ -1,0 +1,59 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/imgui-download"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeLists.txt"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/d9b108f722ecc06a37a9a1198d600a7b/imgui-download.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/88d653a2d06318be67adb473d56404d0/imgui-download-complete.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/835bd72d4806911b4376004327540363/imgui-download-install.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/835bd72d4806911b4376004327540363/imgui-download-mkdir.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/835bd72d4806911b4376004327540363/imgui-download-download.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/835bd72d4806911b4376004327540363/imgui-download-patch.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/835bd72d4806911b4376004327540363/imgui-download-configure.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/835bd72d4806911b4376004327540363/imgui-download-build.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/835bd72d4806911b4376004327540363/imgui-download-test.rule"
+		},
+		
+		{
+			"file" : "P:/datum/build/imgui-download/CMakeFiles/835bd72d4806911b4376004327540363/imgui-download-skip-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "imgui-download" ],
+		"name" : "imgui-download"
+	}
+}

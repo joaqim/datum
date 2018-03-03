@@ -1,0 +1,15 @@
+# Target labels
+ glfw-download
+# Source files and their labels
+P:/datum/build/glfw-download/CMakeFiles/glfw-download
+P:/datum/build/glfw-download/CMakeLists.txt
+P:/datum/build/glfw-download/CMakeFiles/fc2e78fccf27b3dca46da6195a9466d9/glfw-download.rule
+P:/datum/build/glfw-download/CMakeFiles/0d0743208e63e03d214f9e7053841120/glfw-download-complete.rule
+P:/datum/build/glfw-download/CMakeFiles/14023d4910b55bc45fdb409b4058a182/glfw-download-install.rule
+P:/datum/build/glfw-download/CMakeFiles/14023d4910b55bc45fdb409b4058a182/glfw-download-mkdir.rule
+P:/datum/build/glfw-download/CMakeFiles/14023d4910b55bc45fdb409b4058a182/glfw-download-download.rule
+P:/datum/build/glfw-download/CMakeFiles/14023d4910b55bc45fdb409b4058a182/glfw-download-patch.rule
+P:/datum/build/glfw-download/CMakeFiles/14023d4910b55bc45fdb409b4058a182/glfw-download-configure.rule
+P:/datum/build/glfw-download/CMakeFiles/14023d4910b55bc45fdb409b4058a182/glfw-download-build.rule
+P:/datum/build/glfw-download/CMakeFiles/14023d4910b55bc45fdb409b4058a182/glfw-download-test.rule
+P:/datum/build/glfw-download/CMakeFiles/14023d4910b55bc45fdb409b4058a182/glfw-download-skip-update.rule
