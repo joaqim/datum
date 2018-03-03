@@ -1,7 +1,0 @@
-# CMake generation dependency list for this directory.
-P:/external/glew-2.1.0/build/cmake/CMakeLists.txt
-C:/Program Files/CMake/share/cmake-3.9/Modules/GNUInstallDirs.cmake
-C:/Program Files/CMake/share/cmake-3.9/Modules/FindOpenGL.cmake
-C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageHandleStandardArgs.cmake
-C:/Program Files/CMake/share/cmake-3.9/Modules/FindPackageMessage.cmake
-P:/external/glew-2.1.0/build/cmake/../../glew.pc.in

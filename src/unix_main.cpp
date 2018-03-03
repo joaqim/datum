@@ -3,5 +3,9 @@
 
 int main()  
 {
+Application app;
+app.initialize();
+app.run();
+app.exit();
    return 0;  
 }
