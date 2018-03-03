@@ -1,9 +1,8 @@
-
 #include "Application.h"
 
 float tri[] = { -0.8,  0.6,    1, 0, 0,
-		 0.7,  0.0,    1, 1, 1,
-		-0.8, -0.6,    1, 1, 0, };
+                 0.7,  0.0,    1, 1, 1,
+                -0.8, -0.6,    1, 1, 0, };
 
 const char *vertex_shader_src = ""
 "#version 330 core\n"
@@ -43,7 +42,7 @@ glfwInit();
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     
-  m_window = glfwCreateWindow(400, 300, "Mini", NULL, NULL);
+  m_window = glfwCreateWindow(400, 300, "datum", NULL, NULL);
   glfwMakeContextCurrent(m_window);
 
   glewExperimental = GL_TRUE;
@@ -109,5 +108,5 @@ void Application::run() {
 void Application::exit() {
   glDeleteShader(m_vertexShader);
   glDeleteShader(m_fragmentShader);
-	glfwTerminate();
+        glfwTerminate();
 }

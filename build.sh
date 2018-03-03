@@ -9,14 +9,14 @@ popd () {
 }
 
 if [ "$1" == "run" ]; then
-	pushd build/bin
+	pushd build
 	./datum
 	popd
 	exit
 fi
 
 if [ "$1" == "test" ]; then
-	pushd build/bin
+	pushd build
 	./datum
 	popd
 	exit
