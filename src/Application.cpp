@@ -1,5 +1,6 @@
 #include "Application.h"
 
+
 float tri[] = { -0.8,  0.6,    1, 0, 0,
                  0.7,  0.0,    1, 1, 1,
                 -0.8, -0.6,    1, 1, 0, };
@@ -95,7 +96,9 @@ glfwInit();
 
   glEnableVertexAttribArray(1);
   glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (GLvoid*)(2 * sizeof(GLfloat)));
+  return 0;
 }
+
 void Application::run() {
   while(!glfwWindowShouldClose(m_window)) {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -108,5 +111,5 @@ void Application::run() {
 void Application::exit() {
   glDeleteShader(m_vertexShader);
   glDeleteShader(m_fragmentShader);
-        glfwTerminate();
+  glfwTerminate();
 }

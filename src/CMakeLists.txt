@@ -5,3 +5,6 @@ else()
 	
 	LIST(REMOVE_ITEM DATUM_SRC ${PROJECT_SOURCE_DIR}/win32_main.cpp)
 endif()
+
+set(DATUM_SRC "src/test_digits.cpp")
+#set(DATUM_SRC "src/SVMTrain.cpp")
