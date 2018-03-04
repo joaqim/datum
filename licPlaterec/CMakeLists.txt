@@ -1,0 +1,1 @@
+FILE(GLOB licPlaterec_SRC "${PROJECT_SOURCE_DIR}/licPlaterec/*.cpp")

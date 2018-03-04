@@ -28,14 +28,15 @@ REM devenv vorp.vcxproj /build Debug
 REM MSBuild.exe vorp.vcxproj /property:Configuration=Debug
 
 REM GOTO :POPD
-pushd bin\Debug
+
 @echo off
 if %BUILD_STATUS% == 0 (
-    echo Starting main.exe
+	pushd bin\Debug
+    echo Starting datum.exe
     datum.exe
+	popd
 )
 
-popd
 :POPD
 popd
 

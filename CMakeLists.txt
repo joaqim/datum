@@ -30,11 +30,54 @@ if(WIN32)
 	set(AR "Win32")
 
 	add_executable(${EXECUTABLE_NAME} WIN32 ${DATUM_SRC})
+	
+	#SET_TARGET_PROPERTIES(${EXECUTABLE_NAME} PROPERTIES COMPILER_FLAGS "/SUBSYSTEM:CONSOLE /MDd /std:c++17")
+    #set_target_properties(${EXECUTABLE_NAME} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY ${PROJECT_BIN_DIR})
+
+include(DownloadProject.cmake)
+if (CMAKE_VERSION VERSION_LESS 3.2)
+	set(UPDATE_DISCONNECTED_IF_AVAILABLE "")
+else()
+	set(UPDATE_DISCONNECTED_IF_AVAILABLE "UPDATE_DISCONNECTED 1")
+endif()
+
+download_project(PROJ glfw
+	GIT_REPOSITORY https://github.com/glfw/glfw.git
+	GIT_TAG master
+	${UPDATE_DISCONNECTED_IF_AVAILABLE}
+	QUIET
+	)
+set( ENKITS_BUILD_EXAMPLES OFF CACHE BOOL "Build basic example applications" FORCE)
+set( GLFW_BUILD_EXAMPLES OFF CACHE BOOL  "GLFW lib only" FORCE)
+set( GLFW_BUILD_TESTS OFF CACHE BOOL  "GLFW lib only" FORCE)
+set( GLFW_BUILD_DOCS OFF CACHE BOOL  "GLFW lib only" FORCE)
+set( GLFW_BUILD_INSTALL OFF CACHE BOOL  "GLFW lib only" FORCE)
+
+add_subdirectory(${glfw_SOURCE_DIR})
+target_link_libraries(${EXECUTABLE_NAME} glfw ${GLFW_LIBRARIES})
+include_directories(${GLFW_INCLUDE_DIRS})
+if()
+	download_project(PROJ                opencv
+	GIT_REPOSITORY      https://github.com/opencv/opencv.git
+	GIT_TAG             master
+	${UPDATE_DISCONNECTED_IF_AVAILABLE}
+	QUIET
+	)
+add_subdirectory(${opencv_SOURCE_DIR})
+
+include_directories(${opencv_INCLUDE_DIRS})
+include_directories(${opencv_INCLUDE_DIR})
+include_directories(${OpenCV_INCLUDE_DIR})
+include_directories(${OpenCV_INCLUDE_DIRS})
+#link_libraries(${OpenCV_LIBS})
+endif()
+
+#include_directories($ENV{OPENCV_DIR})
+
 else()
 	set(AR "x64")
 
 add_executable(${EXECUTABLE_NAME} ${DATUM_SRC})
-endif()
 
 
 # glfw
@@ -42,29 +85,64 @@ find_package(glfw3 REQUIRED)
 include_directories(${GLFW_INCLUDE_DIRS})
 link_libraries(${GLFW_LIBRARY_DIRS})
 
-# opengl
-find_package(OpenGL REQUIRED)
-include_directories(${OPENGL_INCLUDE_DIRS})
-
 # glew
 find_package(GLEW REQUIRED)
 include_directories(${GLEW_INCLUDE_DIRS})
 
-# OpenCV
-find_package(OpenCV REQUIRED)
-include_directories(${OpenCV_INCLUDE_DIRS})
 
-# Poppler
-#find_package(Poppler REQUIRED)
-#include_directories(${POPPLER_INCLUDE_DIRS})
-#message("${POPPLER_INCLUDE_DIRS}")
+# opengl
+find_package(OpenGL REQUIRED)
 
+if(OPENGL_FOUND)
+include_directories(${OPENGL_INCLUDE_DIR})
+	include_directories(${EXECUTABLE_NAME} ${OPENGL_INCLUDE_DIRS})
+	target_link_libraries(${EXECUTABLE_NAME} ${OPENGL_gl_LIBRARY})
+endif()
+	
 include(FindPkgConfig)
 
 pkg_search_module(POPPLERCPP REQUIRED QUIET poppler-cpp)
 link_directories(${POPPLERCPP_LIBRARY_DIRS})
 
 include_directories("${POPPLER_INCLUDE_DIR}/cpp")
+
+endif()
+
+# OpenCV
+#find_package(OpenCV REQUIRED)
+#include_directories(${OpenCV_INCLUDE_DIRS})
+#link_directories(${OpenCV_LIB_DIR})
+
+include_directories($ENV{OPENCV_DIR}/include)
+
+include_directories("D:/opencv/build/include")
+
+download_project(PROJ poppler-data
+	GIT_REPOSITORY https://anongit.freedesktop.org/git/poppler/poppler-data.git
+	GIT_TAG master
+	${UPDATE_DISCONNECTED_IF_AVAILABLE}
+	QUIET
+	)
+
+add_subdirectory(${poppler-data_SOURCE_DIR})
+include_directories(${poppler-data_INCLUDE_DIRS})
+
+download_project(PROJ poppler
+	GIT_REPOSITORY https://anongit.freedesktop.org/git/poppler/poppler.git
+	GIT_TAG master
+	${UPDATE_DISCONNECTED_IF_AVAILABLE}
+	QUIET
+	)
+
+add_subdirectory(${poppler_SOURCE_DIR})
+include_directories(${poppler_INCLUDE_DIRS})
+	
+# Poppler
+find_package(Poppler REQUIRED)
+include_directories(${POPPLER_INCLUDE_DIRS})
+message("${POPPLER_INCLUDE_DIRS}")
+
+
 
 target_link_libraries(
         ${EXECUTABLE_NAME}
@@ -77,6 +155,7 @@ target_link_libraries(
     poppler-cpp
 )
 
+if()
 add_executable(SVMTrain "src/SVMTrain.cpp")
 target_link_libraries(
 SVMTrain
@@ -88,4 +167,7 @@ target_link_libraries(
 RecogSVM
 ${OpenCV_LIBS}
 )
-
+endif()
+#include("licPlaterec")
+#add_executable(licPlaterec
+#	${licPlaterec_SRC})
