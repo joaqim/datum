@@ -2,9 +2,10 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/ml.hpp>
-#include "dirent.h"
+#include <dirent.h>
 #include "feature.h"
 #include <iostream>
+
 using namespace cv;
 using namespace std;
 using namespace cv::ml;

@@ -1,5 +1,6 @@
 project(DATUM)
 cmake_minimum_required(VERSION 3.6)
+set (CMAKE_CXX_STANDARD 17)
 
 # CMake policies: don't treat imported targets with :: as files
 if(POLICY CMP0028)
@@ -23,6 +24,7 @@ set(EXECUTABLE_NAME datum)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/src)
 include_directories("${CMAKE_SOURCE_DIR}/include")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/modules/")
+set(EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/../external)
 
 include("src/CMakeLists.txt")
 
@@ -36,6 +38,10 @@ else()
 add_executable(${EXECUTABLE_NAME} ${DATUM_SRC})
 endif()
 
+# imgui
+include_directories(${EXTERNAL_DIR}/imgui)
+file(GLOB imgui_SRC ${EXTERNAL_DIR}/imgui/*.cpp)
+add_library(imgui ${imgui_SRC})
 
 # glfw
 find_package(glfw3 REQUIRED)
@@ -58,13 +64,14 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 #find_package(Poppler REQUIRED)
 #include_directories(${POPPLER_INCLUDE_DIRS})
 #message("${POPPLER_INCLUDE_DIRS}")
+#include_directories("${POPPLER_INCLUDE_DIR}/cpp")
 
 include(FindPkgConfig)
 
 pkg_search_module(POPPLERCPP REQUIRED QUIET poppler-cpp)
 link_directories(${POPPLERCPP_LIBRARY_DIRS})
 
-include_directories("${POPPLER_INCLUDE_DIR}/cpp")
+include_directories("${POPPLERCPP_INCLUDE_DIRS}")
 
 target_link_libraries(
         ${EXECUTABLE_NAME}
@@ -75,8 +82,9 @@ target_link_libraries(
 	${OpenCV_LIBS}
     ${POPPLER_LIBRARY}
     poppler-cpp
+    ${POPPLER_LIBRARY}
 )
-
+if()
 add_executable(SVMTrain "src/SVMTrain.cpp")
 target_link_libraries(
 SVMTrain
@@ -88,4 +96,21 @@ target_link_libraries(
 RecogSVM
 ${OpenCV_LIBS}
 )
+endif()
 
+include("src/licPlateRec/CMakeLists.txt")
+#add_subdirectory("src/licPlateRec")
+
+add_executable(licPlateRec ${licPlateRec_SRC})
+target_link_libraries(licPlateRec
+	${OpenCV_LIBS}
+	imgui
+    ${POPPLER_LIBRARY}
+    poppler-cpp
+ 
+    glfw
+        ${OPENGL_LIBRARIES}
+        ${GLEW_LIBRARIES}
+        ${EXTRA_LIBS}
+
+)

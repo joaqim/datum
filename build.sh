@@ -9,14 +9,15 @@ popd () {
 }
 
 if [ "$1" == "run" ]; then
-	pushd build
-	./datum
+	pushd build-linux
+	#./datum
+	./licPlateRec
 	popd
 	exit
 fi
 
 if [ "$1" == "test" ]; then
-	pushd build
+	pushd build-linux
 	./datum
 	popd
 	exit
@@ -24,8 +25,8 @@ fi
 
 
 
-mkdir -p build
-pushd build &&\
+mkdir -p build-linux
+pushd build-linux &&\
 cmake .. &&\
 make
 #cmake --build .

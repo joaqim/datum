@@ -8,8 +8,8 @@
 using namespace cv;
 using namespace std;
 using namespace cv::ml;
-Mat srcImg;
 
+Mat srcImg;
 
 vector<string> list_folder(string path)
 {
