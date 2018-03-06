@@ -28,6 +28,11 @@
 #include <opencv2/ml.hpp>
 #include <dirent.h>
 
+#include <poppler-document.h>
+#include <poppler-page.h>
+#include <poppler-page-renderer.h>
+#include <poppler-image.h>
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
@@ -39,6 +44,10 @@ namespace licPlaterec {
   using std::string;
   using std::vector;
 
+  using poppler::document;
+  using poppler::page;
+  using poppler::image;
+  using poppler::page_renderer;
   //str2char stringTochar;
   //mat2picture mat2bmp;
 
@@ -55,10 +64,13 @@ namespace licPlaterec {
     bool SVMPredict();
 
   public:
+    static std::pair<std::string, bool> getFileExtension(const std::string& FileName);
     static GLuint matToTexture(const cv::Mat &mat, GLenum minFilter, GLenum magFilter, GLenum wrapFilter);
+    static cv::Mat readPDFtoCV(const std::string &fileName, int DPI=100);
   public:
     GLFWwindow *m_pGLFWwindow;
     Mat srcImg;
+    std::string srcPath;
 
     int m_window_width  = 640;
     int m_window_height = 480;
@@ -74,8 +86,11 @@ namespace licPlaterec {
   };
 }
 
+#include "opencv2/objdetect.hpp" // For HOGDescriptor
+
 using cv::ml::SVM;
 using cv::Mat;
+using cv::ml::TrainData;
 
 class SVMClass {
 public:
@@ -87,6 +102,12 @@ public:
   bool TrainSVM(string savepath, string trainImgpath);
   bool SVMPredict();
 
+public: //Handwritten Digits
+  Ptr<SVM> m_pSVM;
+  void trainDigits();
+  void loadDigits();
+  void svmPredict(Ptr<SVM> svm, Mat &testResponse, Mat &testMat );
+public:
   Mat srcImg;
   std::string resultStr;
 };

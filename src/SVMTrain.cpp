@@ -44,6 +44,7 @@ vector<string> list_file(string folder_path)
 	closedir(dir);
 	return files;
 }
+
 bool TrainSVM(string savepath, string trainImgpath) {
 	const int number_of_class = 30;
 	const int number_of_sample = 10;

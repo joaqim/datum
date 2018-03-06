@@ -7,7 +7,40 @@
 #include "AppForm.h"
 
 namespace licPlaterec {
-  
+
+  std::pair<std::string, bool> AppForm::getFileExtension(const std::string& FileName)
+  {
+    if(FileName.find_last_of(".") != std::string::npos)
+      return {FileName.substr(FileName.find_last_of(".")+1), true};
+    return {"", false};
+  }
+  cv::Mat AppForm::readPDFtoCV(const std::string& filename,int DPI) {
+    document* mypdf = document::load_from_file(filename);
+
+    if(mypdf == NULL) {
+      cerr << "couldn't read pdf\n";
+      return cv::Mat();
+    }
+    cout << "pdf has " << mypdf->pages() << " pages\n";
+    page* mypage = mypdf->create_page(0);
+ 
+    page_renderer renderer;
+    renderer.set_render_hint(page_renderer::text_antialiasing);
+    image myimage = renderer.render_page(mypage,DPI,DPI);
+    cout << "created image of  " << myimage.width() << "x"<< myimage.height() << "\n";
+ 
+    cv::Mat cvimg;
+    if(myimage.format() == image::format_rgb24) {
+      cv::Mat(myimage.height(),myimage.width(),CV_8UC3,myimage.data()).copyTo(cvimg);
+    } else if(myimage.format() == image::format_argb32) {
+      cv::Mat(myimage.height(),myimage.width(),CV_8UC4,myimage.data()).copyTo(cvimg);
+    } else {
+      cerr << "PDF format no good\n";
+      return cv::Mat();
+    }
+    return cvimg;
+    return cv::Mat();
+  } 
   AppForm::AppForm() {
     //cv::namedWindow( "floating window", WINDOW_AUTOSIZE );
 
@@ -52,39 +85,46 @@ namespace licPlaterec {
   void AppForm::run() {
 
     SVMClass svm;
-    svm.srcImg = imread("../test/0005.JPG");
     if(!svm.srcImg.data )
-    {
-      cout <<  "Could not open or find the image: "<< "" << std::endl ;
+      {
+        svm.srcImg = imread("../test/0005.JPG");
+
+        if(!svm.srcImg.data ) {
+        cout <<  "Could not open or find the image: "<< "" << std::endl ;
+        exit(EXIT_FAILURE);
+        }
+      }
+    const std::string imgPath = "../data/license_plates";
+
+    if (svm.TrainSVM("svm_test.txt",imgPath))
+      {
+        std::cout << "Training completed." << std::endl;
+      } else {
+      std::cerr << "ERROR" << std::endl;
       exit(EXIT_FAILURE);
     }
-  const std::string imgPath = "../data/license_plates";
 
-  if (svm.TrainSVM("svm_test.txt",imgPath))
-    {
-      std::cout << "Training completed." << std::endl;
-    } else {
-    std::cerr << "ERROR" << std::endl;
-    exit(EXIT_FAILURE);
-  }
-
-  /*
-  if(svm.SVMPredict())
-    {
+    /*
+      if(svm.SVMPredict())
+      {
       std::cout << "Processing completed." << std::endl;
-    } else {
-    std::cerr << "ERROR in SVMPredict() " << std::endl;
-    exit(EXIT_FAILURE);
-  }
-  */
+      } else {
+      std::cerr << "ERROR in SVMPredict() " << std::endl;
+      exit(EXIT_FAILURE);
+      }
+    */
 
-  bool svm_process = false;
+    //svm.trainDigits();
+    svm.loadDigits();
+
+    bool svm_process = false;
 
 
     bool show_test_window = true;
     bool show_another_window = false;
     ImVec4 clear_color = ImColor(114, 144, 154);
 
+    cv::Mat testMat, testResponse;
     while (!glfwWindowShouldClose(m_pGLFWwindow)) {
  
       glfwGetFramebufferSize(m_pGLFWwindow, &m_window_width, &m_window_height);
@@ -93,19 +133,20 @@ namespace licPlaterec {
       glClear(GL_COLOR_BUFFER_BIT);
 
       ImGui_ImplGlfw_NewFrame();
-        draw_frame(svm.srcImg);
+      draw_frame(svm.srcImg);
+      if(testResponse.data) draw_frame(testResponse);
 
       // 1. Show a simple window
       // Tip: if we don't call ImGui::Begin()/ImGui::End() the widgets appears in a window automatically called "Debug"
       {
         /*
-        static float f = 0.0f;
-        ImGui::Text("Hello, world!");
-        ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
-        //ImGui::ColorEdit3("clear color", (float*)&clear_color);
-        //if (ImGui::Button("Test Window")) show_test_window ^= 1;
-        //if (ImGui::Button("Another Window")) show_another_window ^= 1;
-        ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+          static float f = 0.0f;
+          ImGui::Text("Hello, world!");
+          ImGui::SliderFloat("float", &f, 0.0f, 1.0f);
+          //ImGui::ColorEdit3("clear color", (float*)&clear_color);
+          //if (ImGui::Button("Test Window")) show_test_window ^= 1;
+          //if (ImGui::Button("Another Window")) show_another_window ^= 1;
+          ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
         */
       }
 
@@ -124,23 +165,35 @@ namespace licPlaterec {
         }
         
         if(ImGui::Button("Process")) svm_process = true;
-          if(svm_process) {
+
+        if(svm_process) {
 
           static char myPath[ImGuiFs::MAX_PATH_BYTES];
           if (strlen(dlg.getChosenPath())>0) {
             strcpy(myPath,dlg.getChosenPath());
 
+            std::string fileExt;
+            bool isValid;
+
+            tie(fileExt, isValid) = getFileExtension(myPath);
+            if(isValid && fileExt == "pdf") {
+              svm.srcImg = readPDFtoCV(myPath);
+
+            } else {
             auto loadedImg = imread(myPath);
             if(!loadedImg.data )
               {
-                cout <<  "Could not open or find the image: "<< "" << std::endl ;
+                cout <<  "Could not open or find the image: "<< myPath << std::endl ;
               } else {
 
               svm.srcImg = loadedImg;
               
             }
+            }
           }
 
+          svm.svmPredict(svm.m_pSVM, testResponse,svm.srcImg);
+	    /*
           if(svm.SVMPredict())
             {
               std::cout << "Processing completed." << std::endl;
@@ -149,6 +202,7 @@ namespace licPlaterec {
             std::cerr << "ERROR in SVMPredict() " << std::endl;
             exit(EXIT_FAILURE);
           }
+	    */
           svm_process = false;
         }
       }
@@ -274,6 +328,7 @@ namespace licPlaterec {
 
 } // namespace libPlaterec
 
+// SVMClass.cpp
 std::vector<std::string> SVMClass::list_folder(std::string path)
 {
   vector<string> folders;
@@ -325,14 +380,8 @@ char SVMClass::character_recognition(Mat img_character)
       float temp = feature[i];
       m.at<float>(0, i) = temp;
     }
-  //Mat m = Mat(number_of_feature,1, CV_32FC1);           // Open CV 2.4
-  //for (size_t i = 0; i < feature.size(); ++i)
-  //{
-  //float temp = feature[i];
-  //m.at<float>(i,0) = temp;
-  //}
+
   int ri = int(svmNew->predict(m)); // Open CV 3.1
-  /*int ri = int(svmNew.predict(m));*/
   if (ri >= 0 && ri <= 9)
     c = (char)(ri + 48); //ma ascii 0 = 48
   if (ri >= 10 && ri < 18)
@@ -491,12 +540,13 @@ bool SVMClass::SVMPredict() {
 
   //imshow("plate", image);
   //imshow("char", draw_character[0]);
-
+  /*
   Mat plateImg, chaImg;
   convertScaleAbs(plates[0], plateImg);
   convertScaleAbs(draw_character[0], chaImg);
   resize(plateImg, plateImg, cv::Size(200, 50));
   resize(chaImg, chaImg, cv::Size(200, 50));
+  */
 
   /*
     ptbPlate->Image = mat2bmp.Mat2Bimap(plateImg);
@@ -521,3 +571,215 @@ bool SVMClass::SVMPredict() {
     }
   return true;
 }
+
+string pathName = "../data/digits.png";
+int SZ = 20;
+float affineFlags = WARP_INVERSE_MAP|INTER_LINEAR;
+
+Mat deskew(Mat& img){
+    Moments m = moments(img);
+    if(abs(m.mu02) < 1e-2){
+        return img.clone();
+    }
+    float skew = m.mu11/m.mu02;
+    Mat warpMat = (Mat_<float>(2,3) << 1, skew, -0.5*SZ*skew, 0, 1, 0);
+    Mat imgOut = Mat::zeros(img.rows, img.cols, img.type());
+    warpAffine(img, imgOut, warpMat, imgOut.size(),affineFlags);
+
+    return imgOut;
+} 
+
+void loadTrainTestLabel(string &pathName, vector<Mat> &trainCells, vector<Mat> &testCells,vector<int> &trainLabels, vector<int> &testLabels)
+{
+
+    Mat img = imread(pathName,CV_LOAD_IMAGE_GRAYSCALE);
+    int ImgCount = 0;
+    for(int i = 0; i < img.rows; i = i + SZ)
+    {
+        for(int j = 0; j < img.cols; j = j + SZ)
+        {
+            Mat digitImg = (img.colRange(j,j+SZ).rowRange(i,i+SZ)).clone();
+            if(j < int(0.9*img.cols))
+            {
+                trainCells.push_back(digitImg);
+            }
+            else
+            {
+                testCells.push_back(digitImg);
+            }
+            ImgCount++;
+        }
+    }
+    
+    cout << "Image Count : " << ImgCount << endl;
+    float digitClassNumber = 0;
+
+    for(int z=0;z<int(0.9*ImgCount);z++){
+        if(z % 450 == 0 && z != 0){
+            digitClassNumber = digitClassNumber + 1;
+            }
+        trainLabels.push_back(digitClassNumber);
+    }
+    digitClassNumber = 0;
+    for(int z=0;z<int(0.1*ImgCount);z++){
+        if(z % 50 == 0 && z != 0){
+            digitClassNumber = digitClassNumber + 1;
+            }
+        testLabels.push_back(digitClassNumber);
+    }
+}
+
+void CreateDeskewedTrainTest(vector<Mat> &deskewedTrainCells,vector<Mat> &deskewedTestCells, vector<Mat> &trainCells, vector<Mat> &testCells){
+    
+
+    for(int i=0;i<trainCells.size();i++){
+
+        Mat deskewedImg = deskew(trainCells[i]);
+        deskewedTrainCells.push_back(deskewedImg);
+    }
+
+    for(int i=0;i<testCells.size();i++){
+
+        Mat deskewedImg = deskew(testCells[i]);
+        deskewedTestCells.push_back(deskewedImg);
+    }
+}
+
+
+HOGDescriptor hog(
+        Size(20,20), //winSize
+        Size(8,8), //blocksize
+        Size(4,4), //blockStride,
+        Size(8,8), //cellSize,
+                 9, //nbins,
+                  1, //derivAper,
+                 -1, //winSigma,
+                  0, //histogramNormType,
+                0.2, //L2HysThresh,
+                  0,//gammal correction,
+                  64,//nlevels=64
+                  1);
+void CreateTrainTestHOG(vector<vector<float> > &trainHOG, vector<vector<float> > &testHOG, vector<Mat> &deskewedtrainCells, vector<Mat> &deskewedtestCells){
+
+    for(int y=0;y<deskewedtrainCells.size();y++){
+        vector<float> descriptors;
+        hog.compute(deskewedtrainCells[y],descriptors);
+        trainHOG.push_back(descriptors);
+    }
+   
+    for(int y=0;y<deskewedtestCells.size();y++){
+        
+        vector<float> descriptors;
+        hog.compute(deskewedtestCells[y],descriptors);
+        testHOG.push_back(descriptors);
+    } 
+}
+void ConvertVectortoMatrix(vector<vector<float> > &trainHOG, vector<vector<float> > &testHOG, Mat &trainMat, Mat &testMat)
+{
+
+    int descriptor_size = trainHOG[0].size();
+    
+    for(int i = 0;i<trainHOG.size();i++){
+        for(int j = 0;j<descriptor_size;j++){
+           trainMat.at<float>(i,j) = trainHOG[i][j]; 
+        }
+    }
+    for(int i = 0;i<testHOG.size();i++){
+        for(int j = 0;j<descriptor_size;j++){
+            testMat.at<float>(i,j) = testHOG[i][j]; 
+        }
+    }
+}
+
+void getSVMParams(SVM *svm)
+{
+    cout << "Kernel type     : " << svm->getKernelType() << endl;
+    cout << "Type            : " << svm->getType() << endl;
+    cout << "C               : " << svm->getC() << endl;
+    cout << "Degree          : " << svm->getDegree() << endl;
+    cout << "Nu              : " << svm->getNu() << endl;
+    cout << "Gamma           : " << svm->getGamma() << endl;
+}
+
+Ptr<SVM> svmInit(float C, float gamma)
+{
+  Ptr<SVM> svm = SVM::create();
+  svm->setGamma(gamma);
+  svm->setC(C);
+  svm->setKernel(SVM::RBF);
+  svm->setType(SVM::C_SVC);
+
+  return svm;
+}
+
+void svmTrain(Ptr<SVM> svm, Mat &trainMat, vector<int> &trainLabels)
+{
+  Ptr<TrainData> td = TrainData::create(trainMat, ml::ROW_SAMPLE, trainLabels);
+  //svm->train(td);
+  svm->trainAuto(td);
+  svm->save("digits_svm.yml");
+}
+
+void SVMClass::svmPredict(Ptr<SVM> svm, Mat &testResponse, Mat &testMat )
+{
+  svm->predict(testMat);//, testResponse);
+}
+
+void SVMevaluate(Mat &testResponse, float &count, float &accuracy, vector<int> &testLabels)
+{
+  for(int i = 0; i < testResponse.rows; i++)
+  {
+    // cout << testResponse.at<float>(i,0) << " " << testLabels[i] << endl;
+    if(testResponse.at<float>(i,0) == testLabels[i])
+      count = count + 1;    
+  }
+  accuracy = (count/testResponse.rows)*100;
+}
+
+void SVMClass::trainDigits() {
+    vector<Mat> trainCells;
+    vector<Mat> testCells;
+    vector<int> trainLabels;
+    vector<int> testLabels;
+    loadTrainTestLabel(pathName,trainCells,testCells,trainLabels,testLabels);
+        
+    vector<Mat> deskewedTrainCells;
+    vector<Mat> deskewedTestCells;
+    CreateDeskewedTrainTest(deskewedTrainCells,deskewedTestCells,trainCells,testCells);
+    
+    std::vector<std::vector<float> > trainHOG;
+    std::vector<std::vector<float> > testHOG;
+    CreateTrainTestHOG(trainHOG,testHOG,deskewedTrainCells,deskewedTestCells);
+
+    int descriptor_size = trainHOG[0].size();
+    cout << "Descriptor Size : " << descriptor_size << endl;
+    
+    Mat trainMat(trainHOG.size(),descriptor_size,CV_32FC1);
+    Mat testMat(testHOG.size(),descriptor_size,CV_32FC1);
+  
+    ConvertVectortoMatrix(trainHOG,testHOG,trainMat,testMat);
+    
+    float C = 12.5, gamma = 0.5;
+
+    Mat testResponse;
+    m_pSVM = svmInit(C, gamma);
+
+    ///////////  SVM Training  ////////////////
+    svmTrain(m_pSVM, trainMat, trainLabels);
+
+    ///////////  SVM Testing  ////////////////
+    svmPredict(m_pSVM, testResponse, testMat); 
+
+    ////////////// Find Accuracy   ///////////
+    float count = 0;
+    float accuracy = 0 ;
+    getSVMParams(m_pSVM);
+    SVMevaluate(testResponse, count, accuracy, testLabels);
+    
+    cout << "the accuracy is :" << accuracy << endl;
+};
+
+void SVMClass::loadDigits() {
+  //m_pSVM->clear();
+  m_pSVM->load("digits_svm.yml");
+};
